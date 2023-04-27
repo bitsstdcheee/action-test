@@ -45,7 +45,7 @@ jobs:
     name: "Find Files"
     runs-on: ${{ matrix.os }}
     steps:
-    - name: "²éÕÒ crt0.o"
+    - name: "æŸ¥æ‰¾ crt0.o"
       if: matrix.os == 'macos-13'
       run: |
         find / -name crt0.o
