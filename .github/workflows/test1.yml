@@ -1,0 +1,51 @@
+name: test1 for wooden_core
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    matrix:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest , windows-latest, macos-13 ]
+        profile: [ Unix Makefiles, MinGW Makefiles , Visual Studio 17 2022 ]
+        build_type: [ Release , Debug ]
+        gbk: [ off , on ]
+        exclude:
+          # Ubuntu
+          - os: ubuntu-latest
+            profile: Visual Studio 17 2022
+          - os: ubuntu-latest
+            profile: MinGW Makefiles
+
+          # Windows
+          - os: windows-latest
+            profile: Unix Makefiles
+
+          # MacOS Uses clang++ is only supported with UTF-8
+          - os: macos-13
+            gbk: on
+          - os: macos-13
+            profile: MinGW Makefiles
+          - os: macos-13
+            profile: Visual Studio 17 2022
+        include:
+          - os: macos-13
+            profile: Xcode
+            build_type: Release
+            gbk: off
+          - os: macos-13
+            profile: Xcode
+            build_type: Debug
+            gbk: off
+    name: "Find Files"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: "≤È’“ crt0.o"
+      if: matrix.os == 'macos-13'
+      run: |
+        find / -name crt0.o
