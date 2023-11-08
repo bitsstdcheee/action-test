@@ -22,5 +22,5 @@ jobs:
       run: |
         cd hashcat/
         ls
-        ./hashcat -m 13000 -a 3 --increment --increment-min 2 --increment-max 6 \$rar5\$16\$89e6ff16878d66d9abdaae1fc84dbefe\$15\$b38b6d2b34d1cf8e2704f6d66230d54f\$8\$a4fb3374e437133e ?l?l?l?l?l?l?l
+        ./hashcat -m 13000 -a 3 -w 3 --increment --increment-min 2 --increment-max 6 \$rar5\$16\$89e6ff16878d66d9abdaae1fc84dbefe\$15\$b38b6d2b34d1cf8e2704f6d66230d54f\$8\$a4fb3374e437133e ?l?l?l?l?l?l?l
 
