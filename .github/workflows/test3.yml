@@ -13,17 +13,11 @@ jobs:
     steps:
     - name: "Clone Hashcat"
       run: |
-        brew install mingw-w64
         git clone https://github.com/hashcat/hashcat
-        git clone https://github.com/win-iconv/win-iconv
-        cd win-iconv/
-        patch < ../hashcat/tools/win-iconv-64.diff
-        sudo make install
-        cd ../
     - name: "Build Hashcat"
       run: |
         cd hashcat/
-        make win
+        make
     - name: "Run Hashcat"
       run: |
         cd hashcat/
